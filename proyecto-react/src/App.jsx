@@ -1,27 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Navbar from './componentes/Navbar/Navbar'
-import Container from './componentes/Container/Container'
-import Productos from './componentes/Productos/Productos'
+import ItemListContainer from './componentes/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from "./componentes/ItemDetail/ItemDetail"
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <BrowserRouter>
     <Navbar/>
     <h1 className="titulo">Boca Shop</h1>
-    <Container greeting={"Productos Destacados"}/>
-    <div className='tarjeta'>
-      <Productos nombre = "Camisetas" precio = {123} img="public/camiseta.png" />
-      <Productos nombre = "Shorts" precio = {456} img="public/short.png" />
-      <Productos nombre = "Remeras" precio = {789} img="public/remera.png" />
-      <Productos nombre = "Pntalones" precio = {987} img="public/pantalon.png" />
-      <Productos nombre = "Buzos" precio = {654} img="public/buzo.png" />
-      <Productos nombre = "Camperas" precio = {321} img= "public/campera.png"/>
-    </div>
-   </>
+    <Routes>
+      <Route path='/' element={<ItemListContainer greeting={"Productos Destacados"}/>}/>
+      <Route path='/Productos/:id' element={<ItemListContainer/>}/>
+      <Route path='/lista/:listId' element={<ItemDetailContainer/>}/>
+      {/* <Route path='/Shorts' element={<ItemDetailContainer/>}/>
+      <Route path='/Remeras' element={<ItemDetailContainer/>}/>
+      <Route path='/Pantalones' element={<ItemDetailContainer/>}/>
+      <Route path='/Buzos' element={<ItemDetailContainer/>}/>
+      <Route path='/Camperas' element={<ItemDetailContainer/>}/>
+      <Route path='/Medias' element={<ItemDetailContainer/>}/> */}
+      <Route path='*' element={<h4>Error 404: Page not found</h4>}/>
+    </Routes>
+   </BrowserRouter>
   )
 }
 

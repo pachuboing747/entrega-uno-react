@@ -1,7 +1,7 @@
 import image from "./image/carro.svg"
 
 
-const  Carrito = () => {
+const  CartWidget = () => {
     return (
         <div className="carrito">
             <img className="cart" src={image} alt="carro"/>
@@ -10,4 +10,4 @@ const  Carrito = () => {
     )
 }
 
-export default Carrito
+export default CartWidget
